@@ -6,18 +6,16 @@
     <title>Ясинский Иван Иванович — Разработчик</title>
     <style>
         :root {
-            --primary-color: #2563eb;
+            --primary-color: #1e3a8a;     /* глубокий синий */
+            --accent-color: #b45309;      /* тёплый оранжево-коричневый */
             --text-color: #1f2937;
             --light-text: #4b5563;
             --bg-color: #ffffff;
             --border-color: #e5e7eb;
+            --card-bg: #f8fafc;
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -34,25 +32,39 @@
         }
         
         header {
-            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
             margin-bottom: 3rem;
-            border-bottom: 3px solid var(--primary-color);
-            padding-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
         }
         
-        h1 {
-            font-size: 2.8rem;
+        .photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid var(--primary-color);
+            box-shadow: 0 10px 20px rgba(30, 58, 138, 0.15);
+            /* смягчение «цифровой» резкости */
+            filter: contrast(0.93) brightness(1.03) saturate(0.94) blur(0.35px);
+        }
+        
+        .header-text h1 {
+            font-size: 2.6rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
         
         .subtitle {
             font-size: 1.25rem;
             color: var(--light-text);
-            margin-bottom: 1rem;
         }
         
         .contact-info {
+            margin-top: 1rem;
             display: flex;
             justify-content: center;
             gap: 1.5rem;
@@ -66,35 +78,24 @@
         }
         
         .contact-info a:hover {
+            color: var(--accent-color);
             text-decoration: underline;
         }
         
-        section {
-            margin-bottom: 3rem;
-        }
+        section { margin-bottom: 3.5rem; }
         
         h2 {
-            font-size: 1.5rem;
+            font-size: 1.55rem;
             color: var(--primary-color);
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 0.6rem;
+            margin-bottom: 1.6rem;
             position: relative;
-        }
-        
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background-color: var(--primary-color);
         }
         
         .summary {
             font-size: 1.1rem;
-            max-width: 700px;
+            max-width: 720px;
             margin: 0 auto 2rem;
             text-align: center;
             color: var(--light-text);
@@ -103,33 +104,99 @@
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            gap: 1.8rem;
         }
         
         .skill-category {
-            background-color: #f8fafc;
-            padding: 1.5rem;
-            border-radius: 8px;
+            background-color: var(--card-bg);
+            padding: 1.6rem;
+            border-radius: 12px;
             border: 1px solid var(--border-color);
         }
         
         .skill-category h3 {
-            font-size: 1.1rem;
+            color: var(--primary-color);
             margin-bottom: 1rem;
-            color: var(--text-color);
-        }
-        
-        .skill-list {
-            list-style: none;
         }
         
         .skill-list li {
-            padding: 0.4rem 0;
+            padding: 0.45rem 0;
             position: relative;
-            padding-left: 1.5rem;
+            padding-left: 1.6rem;
         }
         
         .skill-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        .project {
+            margin-bottom: 2rem;
+            padding: 1.6rem;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            transition: all 0.25s ease;
+        }
+        
+        .project:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(180, 83, 9, 0.1);
+        }
+        
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .project-stack {
+            color: var(--light-text);
+            font-size: 0.92rem;
+            margin: 0.4rem 0 1rem;
+        }
+        
+        .extra-heading {
+            font-size: 1.55rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+        
+        .extra-heading-first {
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 0.6rem;
+        }
+        
+        .extra-divider {
+            border: none;
+            border-top: 1px solid var(--border-color);
+            margin: 0 0 1.6rem 0;
+        }
+        
+        .extra-columns {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem 2.5rem;
+        }
+        
+        .extra-list {
+            list-style: none;
+        }
+        
+        .extra-list li {
+            padding: 0.45rem 0;
+            position: relative;
+            padding-left: 1.6rem;
+            color: var(--text-color);
+        }
+        
+        .extra-list li::before {
             content: '▸';
             position: absolute;
             left: 0;
@@ -137,117 +204,55 @@
             font-weight: bold;
         }
         
-        .project {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        
-        .project:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 0.8rem;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-        
-        .project-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-        }
-        
-        .project-stack {
-            font-size: 0.9rem;
-            color: var(--light-text);
-            margin-bottom: 1rem;
-        }
-        
-        .project-links a {
-            color: var(--primary-color);
-            font-size: 0.95rem;
-            text-decoration: none;
-        }
-        
-        .project-links a:hover {
-            text-decoration: underline;
-        }
-        
-        .education-item {
-            margin-bottom: 1.5rem;
-        }
-        
-        .education-title {
-            font-weight: 600;
+        @media (max-width: 640px) {
+            .extra-columns { grid-template-columns: 1fr; }
         }
         
         footer {
             text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-color);
+            padding-top: 2.5rem;
+            border-top: 2px solid var(--border-color);
             color: var(--light-text);
             font-size: 0.9rem;
         }
         
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.3rem;
-            }
-            .contact-info {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.8rem;
-            }
-            .container {
-                padding: 1.5rem 1rem;
-            }
-            .project-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-        
-        @media print {
-            body { background: white; color: black; }
-            .project:hover { transform: none; box-shadow: none; }
-            a { color: black !important; }
+            header { flex-direction: column; }
+            .photo { width: 140px; height: 140px; }
+            h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         
-        <!-- ШАПКА -->
+        <!-- ШАПКА С ФОТО -->
         <header>
-            <h1>Ясинский Иван Иванович</h1>
-            <p class="subtitle">Начинающий разработчик | Программирование с помощью ИИ-агентов</p>
+            <img src="photo.jpg" alt="Ясинский Иван Иванович" class="photo">
             
-            <div class="contact-info">
-                <span>13.03.1975</span>
-                <a href="mailto:ivan_i_7@mail.ru">ivan_i_7@mail.ru</a>
-                <a href="https://github.com/ivanyy7" target="_blank">github.com/ivanyy7</a>
-                <!-- Добавьте сюда телефон или Telegram при необходимости -->
+            <div class="header-text">
+                <h1>Ясинский Иван Иванович</h1>
+                <p class="subtitle">Начинающий разработчик | Программирование с помощью ИИ-агентов</p>
+                
+                <div class="contact-info">
+                    <span>13.03.1975</span>
+                    <a href="mailto:ivan_i_7@mail.ru">ivan_i_7@mail.ru</a>
+                    <a href="https://github.com/ivanyy7" target="_blank">github.com/ivanyy7</a>
+                </div>
             </div>
         </header>
 
-        <!-- КРАТКОЕ РЕЗЮМЕ -->
+        <!-- О СЕБЕ -->
         <section>
             <h2>О себе</h2>
             <p class="summary">
                 Начинающий специалист в области программирования с использованием ИИ-агентов. 
-                Имею практический опыт самостоятельной разработки и запуска небольших десктопных приложений 
-                и внутренних производственных сервисов. Быстро обучаюсь, ориентирован на результат.
+                Имею практический опыт самостоятельной разработки и запуска десктопных приложений 
+                и внутренних сервисов на производстве. Быстро обучаюсь и ориентирован на результат.
             </p>
         </section>
 
-        <!-- ТЕХНИЧЕСКИЕ НАВЫКИ -->
+        <!-- НАВЫКИ -->
         <section>
             <h2>Технические навыки</h2>
             <div class="skills-grid">
@@ -261,19 +266,18 @@
                 <div class="skill-category">
                     <h3>Разработка ПО</h3>
                     <ul class="skill-list">
-                        <li>Разработка десктопных приложений для Windows</li>
+                        <li>Десктопные приложения для Windows</li>
                         <li>Проектирование и разработка backend-сервисов</li>
-                        <li>Полный цикл: от идеи до запуска в эксплуатацию</li>
+                        <li>Полный цикл: проектирование → отладка → запуск в эксплуатацию</li>
                         <li>Работа с ИИ-инструментами разработки (Cursor и др.)</li>
                     </ul>
                 </div>
                 <div class="skill-category">
-                    <h3>Инструменты</h3>
+                    <h3>Инструменты и технологии</h3>
                     <ul class="skill-list">
                         <li>Git + GitHub</li>
-                        <li>Windows Desktop разработка</li>
-                        <li>Интеграция сервисов с системами учета</li>
-                        <li>Отладка и тестирование</li>
+                        <li>Интеграция с существующими системами учёта</li>
+                        <li>Отладка и тестирование приложений</li>
                     </ul>
                 </div>
             </div>
@@ -284,54 +288,43 @@
             <h2>Проекты</h2>
             
             <div class="project">
-                <div class="project-header">
-                    <div>
-                        <div class="project-title">ScreenDimmer</div>
-                        <div class="project-stack">Python • Desktop (Windows)</div>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ivanyy7/ScreenDimmer" target="_blank">→ GitHub</a>
-                    </div>
-                </div>
+                <div class="project-title">ScreenDimmer</div>
+                <div class="project-stack">Python • Desktop (Windows)</div>
                 <p><strong>Роль:</strong> Полная разработка с нуля до рабочего состояния</p>
-                <p>Приложение для управления яркостью экрана. Разработано и доведено до стабильной версии.</p>
+                <p>Приложение для управления яркостью экрана. Доведено до стабильной версии.</p>
+                <p><a href="https://github.com/ivanyy7/ScreenDimmer" target="_blank" style="color: var(--accent-color);">→ GitHub</a></p>
             </div>
             
             <div class="project">
-                <div class="project-header">
-                    <div>
-                        <div class="project-title">DDLabel — Сервис печати этикеток</div>
-                        <div class="project-stack">Node.js / Python • Backend • Интеграция с системой учета</div>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ivanyy7/DDLabel" target="_blank">→ GitHub</a>
-                    </div>
-                </div>
-                <p><strong>Роль:</strong> Полный цикл разработки и запуска</p>
-                <p>Сервис для автоматической печати этикеток со сроками годности на производстве. 
-                Полностью спроектирован, написан, отлажен и запущен в повседневную работу.</p>
+                <div class="project-title">DDLabel — Сервис печати этикеток</div>
+                <div class="project-stack">Node.js / Python • Backend сервис</div>
+                <p><strong>Роль:</strong> Полный цикл разработки и запуска в производство</p>
+                <p>Сервис автоматической печати этикеток со сроками годности. Запущен в повседневную эксплуатацию параллельно с основной системой учёта.</p>
+                <p><a href="https://github.com/ivanyy7/DDLabel" target="_blank" style="color: var(--accent-color);">→ GitHub</a></p>
             </div>
         </section>
 
-        <!-- ОБРАЗОВАНИЕ И КУРСЫ -->
+        <!-- ОБРАЗОВАНИЕ -->
         <section>
             <h2>Образование и курсы</h2>
-            <div class="education-item">
-                <div class="education-title">Курс «Программирование на Cursor»</div>
-                <p><strong>Практический курс с проверкой заданий</strong></p>
-                <p>Разработка приложений для десктопа, мобильных устройств и SaaS-сервисов с использованием ИИ-агентов.</p>
-            </div>
+            <p><strong>Курс «Программирование на Cursor»</strong> — с 1 декабря 2025 года по 10 марта 2026 года; три месяца плотных занятий и работы над учебными проектами.</p>
+            <p>Практический курс с проверкой заданий. Разработаны несколько учебных приложений для десктопа и SaaS-сервисов с использованием ИИ-агентов.</p>
         </section>
 
-        <!-- ДОПОЛНИТЕЛЬНО -->
+        <!-- ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ -->
         <section>
-            <h2>Дополнительная информация</h2>
-            <ul class="skill-list" style="columns: 2; max-width: 600px;">
-                <li>Английский язык — базовый</li>
-                <li>Готовность быстро осваивать новые технологии</li>
-                <li>Опыт запуска собственных проектов в реальную эксплуатацию</li>
-                <li>Ответственный подход к отладке и поддержке</li>
-            </ul>
+            <h2 class="extra-heading"><span class="extra-heading-first">Дополнительная</span> информация</h2>
+            <hr class="extra-divider">
+            <div class="extra-columns">
+                <ul class="extra-list">
+                    <li>Английский язык — базовый</li>
+                    <li>Готовность быстро осваивать новые технологии</li>
+                </ul>
+                <ul class="extra-list">
+                    <li>Опыт запуска собственных проектов в реальную эксплуатацию</li>
+                    <li>Ответственный подход к отладке и поддержке</li>
+                </ul>
+            </div>
         </section>
 
         <footer>
